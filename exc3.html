@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>Students</title>
+    <style type="text/css">
+    	body {
+    		font-family:arial;
+    		text-align:center;
+    	}
+
+    	ul, li{
+    		width: 300px;
+    		border:1px solid black;
+    		text-align: center;
+    		margin:0 auto; }
+    </style>
+</head>
+
+<body>
+	<br>
+	<br>
+	<input type="text" id="my-input" placeholder="student name"></input>
+	<button>Click Me!</button>
+	<br>
+	<br>
+	<br>
+	<h2>STUDENTS LIST</h2>
+	<ul class="students">
+	  <li>Einar</li> <!-- first item can't be deleted!  -->
+	</ul>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+		//removing should be TOP of the script as it not invoked when pushing submit button
+		//this is logic issue, it should be OUTSIDE the main event that is being invoked 
+		//once clicking button.
+
+		var removeLi = function () {
+			(this).remove();	
+		};
+
+		$("ul").on("click", "li", removeLi); //I'm binding every li to this function
+	
+		//function of adding li items
+	
+		$("button").on("click",function(){
+
+		$("#my-input").val(); //getting input
+		var newStudent = $("#my-input").val(); //storing the input
+		
+		$('.students').append('<li>' + newStudent + '</li>'); //adding the values as a list items onto the exisiting ul
+	});
+</script>
+
+</body>
+</html>
